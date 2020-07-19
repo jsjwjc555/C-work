@@ -180,3 +180,73 @@ return 0;
 
 ~~详细用法走下面这个连接~~；
 [C语言scanf函数用法详细解释！](https://blog.csdn.net/linux12121/article/details/51980556?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522159494597319724835822341%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=159494597319724835822341&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~first_rank_ecpm_v3~pc_rank_v4-2-51980556.first_rank_ecpm_v3_pc_rank_v4&utm_term=scanf)
+---
+# 1084
+**关键字**：sort()排序。
+# 分析
+按答题数排序，然后相同答题数的还要根据答题时间再排序，最后分数输出还需要按原来输入的顺序，这就需要序号标记，一个人有多重属性，用结构体构造再合适不过，然后用sort的高级用法再进行排序，赋值分数后输出即可。
+## sort（）的用法
+头文件#include   **algorithm**
+
+Sort函数有三个参数：
+
+（1）第一个是要排序的数组的起始地址。
+
+（2）第二个是结束的地址（最后一位要排序的地址）
+
+（3）第三个参数是排序的方法，可以是从大到小也可是从小到大，还可以不写第三个参数，此时默认的排序方法是从小到大排序。
+
+Sort函数使用模板:
+
+Sort(start,end,排序方法)
+ 
+ 其默认升序排序，若需要降序排序，则需要自己写一个cmp（）函数完成降序。
+ ```c++
+ 
+bool complare(int a,int b)
+{
+    return a>b;
+}jiegoutipai
+ ```
+ ### 结构体排序
+ 
+假设自己定义了一个结构体node
+```c++
+
+struct node
+{
+  int a;
+  int b;
+  double c;
+}
+```
+有一个node类型的数组node arr[100]，想对它进行排序：先按a值升序排列，如果a值相同，再按b值降序排列，如果b还相同，就按c降序排列。就可以写这样一个比较函数：
+
+以下是代码片段
+```c
+bool cmp(node x,node y)
+{
+   if(x.a!=y.a) return x.a<y.a;
+   if(x.b!=y.b) return x.b>y.b;
+   return x.c>y.c;
+}
+```
+本体中的cmp函数即排序代码段：
+```c
+int cmp(grade a,grade b)
+{
+    if(a.num!=b.num) return a.num>b.num;//题数不等先排序 
+    else if(strcmp(a.time,b.time)<0)//完成时间的升序排序
+    {
+        return 1;//不交换顺序
+    }
+        else if(strcmp(a.time,b.time)>=0)//时间相等要返回0
+    {
+        return 0;//交换顺序
+    }
+}
+---
+ sort(g,g+n,cmp);//g是数组首地址，n是要排序的个数，cmp是排序函数
+```
+algorithm头文件常用的函数地址：
+[algorithm头文件下函数整合](https://blog.csdn.net/weixin_45884316/article/details/104198196)
