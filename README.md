@@ -181,8 +181,8 @@ return 0;
 ~~详细用法走下面这个连接~~；
 [C语言scanf函数用法详细解释！](https://blog.csdn.net/linux12121/article/details/51980556?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522159494597319724835822341%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=159494597319724835822341&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~first_rank_ecpm_v3~pc_rank_v4-2-51980556.first_rank_ecpm_v3_pc_rank_v4&utm_term=scanf)
 ---
-# 1084
-**关键字**：sort()排序。
+# 1084与1177如出一辙
+**关键字**：结构体sort()排序。
 # 分析
 按答题数排序，然后相同答题数的还要根据答题时间再排序，最后分数输出还需要按原来输入的顺序，这就需要序号标记，一个人有多重属性，用结构体构造再合适不过，然后用sort的高级用法再进行排序，赋值分数后输出即可。
 ## sort（）的用法
