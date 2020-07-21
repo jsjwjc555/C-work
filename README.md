@@ -2,7 +2,7 @@
 # 转入计算机专业暑假的c++作业
 一点一点学习c++知识
 
-# 1103 弗洛的餐厅
+# 1103 餐厅队列模拟
 **关键字**：模拟，队列，处理HH:MM型字符方法，数组运用。
 
 ## 题目分析
@@ -68,7 +68,7 @@ size()返回队列中元素的个数
 * 判断queue队列空，如例：q.empty()，当队列空时，返回true。
 
 * 访问队列中的元素个数，如例：q.size()
-# 4011 working in Beijing
+# 4011 北京工作路费问题
 **关键字**：数组，比较，输入输出。
 ## 题目分析
 比较简单的比较取最有，for循环加if else轻松搞定。
@@ -181,7 +181,7 @@ return 0;
 ~~详细用法走下面这个连接~~；
 [C语言scanf函数用法详细解释！](https://blog.csdn.net/linux12121/article/details/51980556?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522159494597319724835822341%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=159494597319724835822341&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~first_rank_ecpm_v3~pc_rank_v4-2-51980556.first_rank_ecpm_v3_pc_rank_v4&utm_term=scanf)
 ---
-# 1084与1177如出一辙
+# 1084与1177如出一辙 答题数和时间排序给分问题
 **关键字**：结构体sort()排序。
 # 分析
 按答题数排序，然后相同答题数的还要根据答题时间再排序，最后分数输出还需要按原来输入的顺序，这就需要序号标记，一个人有多重属性，用结构体构造再合适不过，然后用sort的高级用法再进行排序，赋值分数后输出即可。
@@ -250,3 +250,63 @@ int cmp(grade a,grade b)
 ```
 algorithm头文件常用的函数地址：
 [algorithm头文件下函数整合](https://blog.csdn.net/weixin_45884316/article/details/104198196)
+# 1129 明码暗码转换
+**关键字**：数组，ASCII码从char转为int，scanf与string的不匹配
+## 问题分析
+本体思路比较简单，input是暗码string型数据，转成char数组遍历后转成暗码int数组，用题中所给算法转成明码int数组，再通过映射转成明码string然后输出。过程清晰，但是出现了例子测试输出无误，思路无误但就是WA的问题，这就是HDU不好的地方，他不给你WA的测试数据让你很难发现特例漏洞。
+
+### 方法即所学
+* 由于scanf对c++的所有类都不支持包括string,所以string的输入还是用cin把。
+* char型字符简单的+0后即转成他的ASCII码值。也可以用（int）强制转换。
+## 四则运算
+**关键字**:switch,printf的保留小数
+# 题目分析
+简单的switch完成加减乘除四则运算，需要注意的是除法需要保留小数点后两位，分两种情况，一种是结果是整数直接输出，另一种是小数的情况
+## printf的保留n位小数
+```c++
+
+#include<stdio.h>
+ 
+int main()
+{
+	
+	printf("%f\n", 100.00);//默认保留6位小数
+	printf("%.0f\n", 100.00);//保留0位小数，且结果自动四舍五入
+	printf("\n");
+ 
+	printf("%f\n", 100.30);
+	printf("%.0f\n", 100.30);
+	printf("\n");
+ 
+	printf("%f\n", 100.50);
+	printf("%.0f\n", 100.50);
+	printf("\n");
+ 
+	printf("%f\n", 100.53);
+	printf("%.1f\n", 100.53);//保留一位小数
+	printf("\n");
+ 
+	printf("%f\n", 100.55);
+	printf("%.1f\n", 100.55);
+	printf("\n");
+ 
+	printf("%f\n", 100.56);
+	printf("%.1f\n", 100.56);
+	printf("\n");
+ 
+	printf("%f\n", 100.563);
+	printf("%.2f\n", 100.563);
+	printf("\n");
+ 
+	printf("%f\n", 100.565);
+	printf("%.2f\n", 100.565);
+	printf("\n");
+ 
+	printf("%f\n", 100.566);
+	printf("%.2f\n", 100.566);
+	printf("\n");
+	return 0;
+}
+```
+![enter description here](https://img-blog.csdn.net/20170715193016143?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYWJjZHUx/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+ 
