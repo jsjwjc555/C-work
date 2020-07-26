@@ -4,7 +4,6 @@
 #include <cstring>
 #include <algorithm> 
 #define N 1005
-/* run this program using the console pauser or add your own getch, system("pause") or input loop */
 using namespace std;
 struct Node
 {
@@ -37,7 +36,7 @@ void compute(Node x[],int k)//第k种排序方式
 		cnt++;
 	}
 }
-int main(int argc, char *argv[]) {
+int main() {
 	while(~scanf("%d%d",&n,&m))
 	{
 		for(int i=0;i<n;i++)
@@ -59,10 +58,6 @@ int main(int argc, char *argv[]) {
 			m_rate[i].num=b[d[i]]/c[d[i]];
 			m_rate[i].seq=d[i];
 		}
-		/*for(int i=0;i<m;i++)
-		{
-			printf("%lf,%lf,%lf,%lf\n",gold[i].num,medal[i].num,g_rate[i].num,m_rate[i].num);
-		}*/
 		memset(ranking,0,sizeof(ranking));
 		compute(gold,1);//根据题目的意思，不同的排序方式 
 		compute(medal,2);
