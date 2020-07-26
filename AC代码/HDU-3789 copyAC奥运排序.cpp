@@ -17,8 +17,8 @@ bool cmp(Node a,Node b)
 }
 int ranking[N][5];
 int n,m;
-double a[N],b[N],c[N];
-int d[N];
+double a[N],b[N],c[N];//分别为第N个国家的金牌数，奖牌数，人口数
+int d[N];//参与排名的国家编号
 void compute(Node x[],int k)//第k种排序方式 
 {
 	sort(x,x+m,cmp);//进行排序，大的在前 
