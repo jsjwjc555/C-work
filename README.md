@@ -336,3 +336,93 @@ C语言中，EOF常被作为文件结束的标志。还有很多文件处理函�
 
 原文链接：https://blog.csdn.net/henu1710252658/article/details/83040281
 * 但是同时得知了c++的`while(cin>>n,n)`有一样的效果，自己在vs2013上试了试的确如此，但HDU就给c++的output limited exceeded的错误，这还真是第一次见.
+# C++里面的几种cin
+>做oj题有各种格式的input，这时候就需要在程序里提供获取外部数据的接口，c一般是scanf，功能比较强大，可以自定义输入的格式，长度等，c++比较僵硬，cin，cin.getline（），getline等都是常用的函数，这里总结一下他们的用法和区别。
+
+## Cin
+```c++
+#include <iostream>
+using namespace std;
+main ()
+{
+int a,b;
+cin>>a>>b;
+cout<<a+b<<endl;
+}
+```
+* 用法1：输入一个数字或字符
+输入：`jkljkljkl`
+输出：`jkljkljkl`
+* 用法2：接收一个字符串，遇“空格”、“TAB”、“回车”就结束
+输入：`jkljkl jkljkl  `     //遇空格结束
+输出：`jkljkl`
+## cin.getline()
+```c++
+#include <iostream>
+using namespace std;
+main ()
+{
+char m[20];
+cin.getline(m,5);
+cout<<m<<endl;
+}
+```
+用法:接收一个字符串，可以接收空格并输出
+输入：`jkljkljkl`
+输出：`jklj`
+接收5个字符到m中，其中最后一个为'\0'，所以只看到4个字符输出；
+如果把5改成20：
+输入：`jkljkljkl`
+输出：`jkljkljkl`
+>延伸：
+1、cin.getline()实际上有三个参数，cin.getline(接收字符串的变量,接收字符个数,结束字符)
+2、当第三个参数省略时，系统默认为'\0'
+3、如果将例子中cin.getline()改为cin.getline(m,5,'a');当输入jlkjkljkl时输出jklj，输入jkaljkljkl时，输出jk
+## getline()
+```c++
+#include<iostream>
+#include<string>
+using namespace std;
+main ()
+{
+string str;
+getline(cin,str);
+cout<<str<<endl;
+}
+```
+用法：接收一个字符串，可以接收空格并输出，需包含“#include<string>”
+输入：`jkljkljkl`
+输出：`jkljkljkl`
+输入：`jkl jfksldfj jklsjfl`
+输出：`jkl jfksldfj jklsjfl`
+
+## 注意的问题
+>1、cin.getline()属于istream流，而getline()属于string流，是不一样的两个函数
+2、当同时使用cin>>,getline()时，需要注意的是，在cin>>输入流完成之后，getline()之前，需要通过
+方法一：str="\n"; getline(cin,str);
+方法二：cin.clear(); cin.sync();
+的方式作为输入流cin以清除缓存，如果不这样做的话，在控制台上就不会出现getline()的输入提示，而直接跳过，因为程序默认地将之前的变量作为输入流。
+
+---
+测试：
+```c++
+#include<iostream>
+#include<string>
+#include<sstream>
+using namespace std;
+int main(){
+	string s1;
+	string s2;
+	cin >> s1;
+	cout << "s1 is :" << s1 << endl;
+	cin.clear();cin.sync();//这两个作用一致，都是清空之前cin的缓存
+	getline(cin, s2);
+	cout << "s2 is :" << s2 << endl;
+	//system("pause");
+	return 0;
+}
+```
+**更加详细的深层次的解读：[cin、cin.get()、getline()（讲解的很详细）黄刚的博客](https://blog.csdn.net/xuexiacm/article/details/8101859?utm_medium=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase&depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase)
+# HDU-1509优先队列
+经典优先队列
+[优先对联](https://blog.csdn.net/qq_42614911/article/details/98743761?utm_medium=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromMachineLearnPai2-1.channel_param&depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromMachineLearnPai2-1.channel_param)
